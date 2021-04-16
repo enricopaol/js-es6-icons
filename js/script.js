@@ -111,20 +111,24 @@ const colors = [
 </div> 
 */
 
-// Milestone 1
-// Partendo dalla seguente struttura dati, 
-// mostriamo in pagina tutte le icone disponibili come da layout.
-const iconsColored = getIconsColored(icons, colors);
-
-const containerIcons = $('#container-icons');
-printIcons(iconsColored, containerIcons); 
 
 // Milestone 2
 // Coloriamo le icone per tipo
+const iconsColored = getIconsColored(icons, colors);
+
+// Milestone 1
+// Partendo dalla seguente struttura dati, 
+// mostriamo in pagina tutte le icone disponibili come da layout.
+const containerIcons = $('#container-icons');
+printIcons(iconsColored, containerIcons); 
 
 
 // Milestone 3
 // Creiamo una select con i tipi di icone e usiamola per filtrare le icone
+const typesArrayIcons = getIconsType(icons);
+const selectContainer = $('#type');
+printOptions(typesArrayIcons, selectContainer);
+
 
 
 /* ------------ FUNCTIONS ------------ */
@@ -203,7 +207,28 @@ function getIconsType(arrayIcons) {
 		}				
 									
 	});	
-
 	return arrayIconsType;
 }
 
+
+// Questa funzione stampa delle option in una select. I valori delle option sono uguali ai valori
+// della proprietà type dell'array di oggetti.
+//
+// typeValues --> Array di stringhe che rappresentano le proprietà degli oggetti nell'array.
+// select --> l'oggetto Jquery che rappresenta la select in cui devo stampare i typeValues.
+//
+// return: void (undefined)
+function printOptions(typeValues, select) {
+	
+	typeValues.forEach( (element) => {
+		const optionToPrint = `
+			<option value="${element}">${element}</option>
+		`;
+
+		select.append(optionToPrint);
+		// L'opzione All è di default nell'html
+	});
+}
+
+
+// Devo creare 

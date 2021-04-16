@@ -21,9 +21,20 @@ header .logo {
     padding-top: 20px;
 }
 
+
+/* SECTION SEARCH ICONS */
+.search-icons {
+    background-color: #29b1dd;
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+}
+.search-icons label {
+    margin-right: 10px;
+}
 /* SECTION ICONS */
 .icons {
-    background-color: lightgrey;
+    background-color: #dddddd;
 }
 
 .icons #container-icons {
@@ -46,4 +57,5 @@ header .logo {
 }
 .icons .single-icon i {
     font-size: 60px;
+    margin-bottom: 10px;
 }
