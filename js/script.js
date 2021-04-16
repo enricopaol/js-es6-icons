@@ -114,11 +114,14 @@ const colors = [
 // Milestone 1
 // Partendo dalla seguente struttura dati, 
 // mostriamo in pagina tutte le icone disponibili come da layout.
+const iconsColored = getIconsColored(icons, colors);
+
 const containerIcons = $('#container-icons');
 printIcons(icons, containerIcons); 
 
 // Milestone 2
 // Coloriamo le icone per tipo
+
 
 // Milestone 3
 // Creiamo una select con i tipi di icone e usiamola per filtrare le icone
@@ -151,9 +154,45 @@ function printIcons(objectArray, container) {
 
 		// Devo stampare il template literal in pagina
 		container.append(templateIcon);
-	});
+	});	
+}
 
+
+// Questa funzione crea un nuovo array aggiungendo all'array precedente la proprietà color
+// che cambia in funzione della proprietà type dell'array precedente.
+//
+// arrayIcons --> l'array di oggetti che rappresenta le icone
+// arrayColors --> Array di stringhe che rappresentano i colori css
+//
+// Return: Array di oggetti
+function getIconsColored(arrayIcons, arrayColors) {
+	// Ho bisogno di una array contenente stringhe dei tipi di icone, non ripetute.
+	const arrayIconsType = getIconsType(arrayIcons);
+}
+
+// Questa funzione ricava i tipi di icone da un array di oggetti e li mette in un array di stringhe
+//
+// arrayIcons --> l'array di oggetti che rappresenta le icone
+//
+// return: array di stringhe
+function getIconsType(arrayIcons) {
+	const arrayIconsType = arrayIcons.map( (element) => {		
+
+		// Creo una copia del vecchio oggetto
+		const newObject = {
+			...element
+		};
+			
+		// Ricavo la proprietà type dal nuovo oggetto
+		let IconsType = newObject.type;		
+
+		if( arrayIconsType.includes(IconsType)) {
+			return IconsType;
+		}
+		
+									
+	});	
+	console.log(arrayIconsType);
 	
-};
-
+}
 
