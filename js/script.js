@@ -117,7 +117,7 @@ const colors = [
 const iconsColored = getIconsColored(icons, colors);
 
 const containerIcons = $('#container-icons');
-printIcons(icons, containerIcons); 
+printIcons(iconsColored, containerIcons); 
 
 // Milestone 2
 // Coloriamo le icone per tipo
@@ -143,11 +143,12 @@ function printIcons(objectArray, container) {
 		const iconPrefix = element.prefix;
 		const iconName = element.name;
 		const iconFamily = element.family;
+		const iconColor = element.color;
 
 		// Creo template literal
 		const templateIcon = `
 			<div class="single-icon">
-				<i class="${iconFamily} ${iconPrefix}${iconName}"></i>
+				<i class="${iconFamily} ${iconPrefix}${iconName}" style="color: ${iconColor}"></i>
 				<div class="name">${iconName}</div>
 			</div> 
 		`;
@@ -168,6 +169,22 @@ function printIcons(objectArray, container) {
 function getIconsColored(arrayIcons, arrayColors) {
 	// Ho bisogno di una array contenente stringhe dei tipi di icone, non ripetute.
 	const arrayIconsType = getIconsType(arrayIcons);
+
+	const newArrayObjects = arrayIcons.map( (element) => {
+		const newObject = {
+			...element
+		};
+
+		// Ricavo l'indice di arrayIconsType corrispondente al valore della proprietà type dell'oggetto
+		let indexOfTypes = arrayIconsType.indexOf(newObject.type);
+
+		// Il valore della proprietà color sarà uguale all'elemento di arrayColors
+		// che ha indice uguale a quello dell'elemento in arrayIconsType
+		newObject.color = arrayColors[indexOfTypes];	
+		return newObject;	
+	});
+
+	return newArrayObjects;
 }
 
 // Questa funzione ricava i tipi di icone da un array di oggetti e li mette in un array di stringhe, non ripetuti.
@@ -180,21 +197,13 @@ function getIconsType(arrayIcons) {
 
 	// Uso un forEach per pushare nell'array arrayIconsType la proprietà type dell'oggetto in arrayIcons
 	arrayIcons.forEach( (element) => {		
-
-		if( !arrayIconsType.includes(element.type)) {
-			// Creo una copia del vecchio oggetto
-			const newObject = {
-				...element
-			};
-				
-			// Ricavo la proprietà type dal nuovo oggetto
-			let IconsType = newObject.type;	
-
-			arrayIconsType.push(IconsType) ;
+		let iconsType = element.type;	
+		if( !arrayIconsType.includes(iconsType)) {						
+			arrayIconsType.push(iconsType) ;
 		}				
 									
 	});	
-	console.log(arrayIconsType);
-	
+
+	return arrayIconsType;
 }
 
