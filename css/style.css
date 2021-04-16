@@ -26,23 +26,23 @@ header .logo {
     background-color: lightgrey;
 }
 
-.icons .container {
+.icons #container-icons {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 30px 0;
+    padding-top: 30px;
 }
 
 .icons .single-icon {
     background-color: #fff;
     text-align: center;
-    font-size: 25px;
+    font-size: 20px;
     text-transform: uppercase;
     padding: 10px;
     border: 1px solid black;
     border-radius: 15px;
-    width: calc( 100% / 5 - 50px);
-    margin-bottom: 20px;
+    width: calc( ( 100% - 40px ) / 5);
+    margin-bottom: 30px;
 }
 .icons .single-icon i {
     font-size: 60px;
