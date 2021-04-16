@@ -4,3 +4,46 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/* COMMON */
+.container {
+    width: 80%;
+    margin: auto;
+}
+img {
+    display: block;
+    width: 100%;
+}
+
+/* HEADER */
+header .logo {
+    width: 200px;
+    padding-top: 20px;
+}
+
+/* SECTION ICONS */
+.icons {
+    background-color: lightgrey;
+}
+
+.icons .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 30px 0;
+}
+
+.icons .single-icon {
+    background-color: #fff;
+    text-align: center;
+    font-size: 25px;
+    text-transform: uppercase;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 15px;
+    width: calc( 100% / 5 - 50px);
+    margin-bottom: 20px;
+}
+.icons .single-icon i {
+    font-size: 60px;
+}
