@@ -103,6 +103,14 @@ const colors = [
     'purple'
 ];
 
+
+/* 
+<div class="single-icon">
+	<i class="fas fa-cat"></i>
+	<div class="name">Cat</div>
+</div> 
+*/
+
 // Milestone 1
 // Partendo dalla seguente struttura dati , 
 // mostriamo in pagina tutte le icone disponibili come da layout.
