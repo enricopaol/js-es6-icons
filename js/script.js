@@ -130,16 +130,31 @@ const selectContainer = $('#type');
 printOptions(typesArrayIcons, selectContainer);
 
 
+selectContainer.change(function() {
+
+	// Voglio che all'evento change mi mostri soltanto le icone che hanno il valore della proprietà type
+	// uguale al valore della option selezionata.
+	let valueOfType = $(this).val();
+	let arrayFiltered = filterArrayObjects(iconsColored, valueOfType);
+
+	// Stampo le icone scelte
+	printIcons(arrayFiltered, containerIcons); 
+});
+
+
 
 /* ------------ FUNCTIONS ------------ */
 
 // Questa funzione stampa le icone in pagina a partire da un array di oggetti
 //
 // objectArray --> l'array di oggetti che rappresenta le icone 
-// container --> l'elemento html sul quale voglio stampare le icone
+// container --> L'oggetto JQuery che rappresenta l'elemento html sul quale voglio stampare le icone
 //
 // return: void (undefined)
 function printIcons(objectArray, container) {
+
+	// Svuoto il container prima di stampare tutto
+	container.html('');
 	
 	// Devo scorrere l'array con un ciclo foEach e ricavare le informazioni per creare
 	// il template literal
@@ -231,4 +246,25 @@ function printOptions(typeValues, select) {
 }
 
 
-// Devo creare 
+// Questa funzione filtra un array di oggetti secondo un valore che gli viene richiesto
+//
+// arrayObjects --> l'array di oggetti che rappresenta le icone
+// value --> il valore delle proprietà che gli oggetti devono avere 
+//
+// return: un array di oggetti che hanno la proprietà richiesta.
+function filterArrayObjects(arrayObjects, value) {
+	
+	if (value == 'all') {
+		return arrayObjects
+	}
+
+	const arrayObjectFiltered = arrayObjects.filter( (element) => {
+
+		return element.type == value;
+	});
+
+	return arrayObjectFiltered;
+}
+
+
+
