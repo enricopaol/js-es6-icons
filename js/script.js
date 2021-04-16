@@ -170,26 +170,28 @@ function getIconsColored(arrayIcons, arrayColors) {
 	const arrayIconsType = getIconsType(arrayIcons);
 }
 
-// Questa funzione ricava i tipi di icone da un array di oggetti e li mette in un array di stringhe
+// Questa funzione ricava i tipi di icone da un array di oggetti e li mette in un array di stringhe, non ripetuti.
 //
 // arrayIcons --> l'array di oggetti che rappresenta le icone
 //
 // return: array di stringhe
 function getIconsType(arrayIcons) {
-	const arrayIconsType = arrayIcons.map( (element) => {		
+	const arrayIconsType = [];
 
-		// Creo una copia del vecchio oggetto
-		const newObject = {
-			...element
-		};
-			
-		// Ricavo la proprietà type dal nuovo oggetto
-		let IconsType = newObject.type;		
+	// Uso un forEach per pushare nell'array arrayIconsType la proprietà type dell'oggetto in arrayIcons
+	arrayIcons.forEach( (element) => {		
 
-		if( arrayIconsType.includes(IconsType)) {
-			return IconsType;
-		}
-		
+		if( !arrayIconsType.includes(element.type)) {
+			// Creo una copia del vecchio oggetto
+			const newObject = {
+				...element
+			};
+				
+			// Ricavo la proprietà type dal nuovo oggetto
+			let IconsType = newObject.type;	
+
+			arrayIconsType.push(IconsType) ;
+		}				
 									
 	});	
 	console.log(arrayIconsType);
